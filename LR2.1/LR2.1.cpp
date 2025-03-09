@@ -117,10 +117,17 @@ int main()
 
     delete c4;
 
-    Coloredcube* p = new Coloredcube(10, 10, 10, 30);
+    Coloredcube *p = new Coloredcube(10, 10, 10, 30);
     p->chcolor(45);
     
     delete p;
+
+    cube *p1 = new Coloredcube(10, 10, 20, 45);
+    Coloredcube* p2 = new Coloredcube(10, 10, 20, 45);
+
+    delete p1;
+    delete p2;
+
    
     _getch();
     return 0;
