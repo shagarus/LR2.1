@@ -2,23 +2,18 @@
 #include <iostream>
 #include <conio.h>
 
+//Инициализация полей класса в списке инициализации
 class ball {
 public:
     int m, r;
-    ball() {
-        printf("ball()\n");
-        m = 0;
-        r = 0;
+    ball() : m(0), r(0) {
+        printf("ball()\n");  
     }
-    ball(int m, int r) {
+    ball(int m, int r) : m(m), r(r) {
         printf("ball(int m, int r)\n");
-        this->m = m;
-        this->r = r;
     }
-    ball(const ball &p) {
+    ball(const ball &p) : m(p.m), r(p.r){
         printf("ball(const ball &p)\n");
-        m = p.m;
-        r = p.r;
     }
     ~ball() {
         printf("%d, %d\n", m, r);
@@ -101,6 +96,8 @@ int main()
         ball b2(10, 1);
         ball b3(b2);
     }
+    printf("\n");
+
     cube *c = new cube;
     cube *c2 = new cube(10, 20, 30);
     cube *c3 = new cube(*c2);
@@ -110,23 +107,27 @@ int main()
     delete c;
     delete c2;
     delete c3;
+    printf("\n");
 
     cube* c4 = new cube(10, 10, 10);
     c4->sizedouble();
     c4->size(1, -5, 4);
 
     delete c4;
+    printf("\n");
 
     Coloredcube *p = new Coloredcube(10, 10, 10, 30);
     p->chcolor(45);
     
     delete p;
+    printf("\n");
 
     cube *p1 = new Coloredcube(10, 10, 20, 45);
     Coloredcube* p2 = new Coloredcube(10, 10, 20, 45);
 
     delete p1;
     delete p2;
+    printf("\n");
 
    
     _getch();
