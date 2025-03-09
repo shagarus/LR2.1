@@ -65,6 +65,35 @@ void cube::sizedouble() {
     w = w * 2;
     l = l * 2;
 }
+
+class Coloredcube:public cube {
+protected:
+    int color;
+public:
+    Coloredcube() : cube() {
+        printf("Coloredcube()\n");
+        color = 0;
+    }
+    Coloredcube(int h, int w, int l, int color) : cube(h, w, l) {
+        printf("Coloredcube(int h, int w, int l, int color)\n");
+        this->color = color;
+    }
+    Coloredcube(const Coloredcube& p) {
+        printf("Coloredcube(const cube &p)\n");
+        color = p.color;
+        h = p.h;
+        w = p.w;
+        l = p.l;
+    }
+    ~Coloredcube() {
+        printf("%d, %d, %d color=%d\n", h, w, l, color);
+        printf("~Coloredcube()\n");
+    }
+    void chcolor(int new_color) {
+        color = new_color;
+    }   
+
+};
 int main()
 {
     {
@@ -88,8 +117,11 @@ int main()
 
     delete c4;
 
-       
-
+    Coloredcube* p = new Coloredcube(10, 10, 10, 30);
+    p->chcolor(45);
+    
+    delete p;
+   
     _getch();
     return 0;
 }
