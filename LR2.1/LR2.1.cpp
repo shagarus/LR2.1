@@ -26,8 +26,9 @@ public:
     }
 };
 class cube {
-public:
+protected:
     int h, w, l;
+public:
     cube() {
         printf("cube()\n");
         h = 0;
@@ -50,7 +51,20 @@ public:
         printf("%d, %d, %d\n", h, w, l);
         printf("~cube()\n");
     }
+    void size(int dh, int dw, int dl) {
+        h = h + dh;
+        w = w + dw;
+        l = l + dl;
+    }
+    void sizedouble();
+
 };
+
+void cube::sizedouble() {
+    h = h * 2;
+    w = w * 2;
+    l = l * 2;
+}
 int main()
 {
     {
@@ -58,13 +72,23 @@ int main()
         ball b2(10, 1);
         ball b3(b2);
     }
-    cube *p = new cube;
-    cube *p2 = new cube(10, 20, 30);
-    cube *p3 = new cube(*p2);
+    cube *c = new cube;
+    cube *c2 = new cube(10, 20, 30);
+    cube *c3 = new cube(*c2);
 
-    delete p;
-    delete p2;
-    delete p3;
+    //c->h = 5; protected, нельзя обратиться
+
+    delete c;
+    delete c2;
+    delete c3;
+
+    cube* c4 = new cube(10, 10, 10);
+    c4->sizedouble();
+    c4->size(1, -5, 4);
+
+    delete c4;
+
+       
 
     _getch();
     return 0;
